@@ -67,7 +67,7 @@ public class MenuBarView extends VerticalLayout implements View{
 		MenuItem baseItem = menuBar.addItem("基础设置", null);
 		baseItem.addItem("用户管理", FontAwesome.USER,new MenuItemClick(BeanItemView.NAME));
 		baseItem.addItem("表格测试", FontAwesome.USER,new MenuItemClick(TableView.NAME));
-		baseItem.addItem("Grid测试", FontAwesome.USER,new MenuItemClick(GridView.NAME));
+		baseItem.addItem("Grid测试2", FontAwesome.USER,new MenuItemClick(GridView.NAME));
 		baseItem.addItem("MVP测试", FontAwesome.USER,new MenuItemClick(MvpView.NAME));
 		baseItem.addItem("BeanItem表单测试", FontAwesome.USER,new MenuItemClick(BeanItemView.NAME));
 		baseItem.addItem("自定义组件测试", FontAwesome.USER,new MenuItemClick(CustomComponentView.NAME));
