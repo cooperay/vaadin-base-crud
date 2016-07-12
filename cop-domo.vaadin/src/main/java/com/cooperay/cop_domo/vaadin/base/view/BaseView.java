@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.atmosphere.util.IOUtils;
+
 import com.cooperay.cop_domo.vaadin.base.ann.FormProperty;
 import com.cooperay.cop_domo.vaadin.base.ann.HideProperty;
 import com.cooperay.cop_domo.vaadin.component.ConfimWindow;
@@ -17,6 +19,7 @@ import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.data.validator.BeanValidator;
 import com.vaadin.event.SelectionEvent;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.UserError;
 import com.vaadin.shared.ui.grid.HeightMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -32,6 +35,8 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.Table;
+import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
@@ -223,7 +228,12 @@ public abstract class BaseView<T> extends VerticalLayout implements BaseViewInte
 			if(Enum.class.isAssignableFrom(field.getType())){
 				formField = binder.buildAndBind(caption,field.getName(),ComboBox.class);
 			}else {
-				formField = binder.buildAndBind(caption,field.getName());
+				String f = formProperty.field();
+				if("textArea".equals(f)){
+					formField = binder.buildAndBind(caption,field.getName(),TextArea.class);
+				}else {
+					formField = binder.buildAndBind(caption,field.getName());
+				}
 			}
 			formField.addValidator(new BeanValidator(entry.getClass(), field.getName()));
 			if(formField instanceof TextField){

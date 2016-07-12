@@ -36,10 +36,19 @@ public class Account {
 	@FormProperty(text = "工作：")
 	private String work;
 	
+	@FormProperty(text = "checkbox测试：")
+	private boolean tbool;
 	
 	
-	
-	 public enum OrderState{
+	 public boolean isTbool() {
+		return tbool;
+	}
+
+	public void setTbool(boolean tbool) {
+		this.tbool = tbool;
+	}
+
+	public enum OrderState{
 	        /** 已取消 */
 	        CANCEL("已取消",1),
 	        /** 待审核 */

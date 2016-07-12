@@ -10,7 +10,7 @@ public class Group {
 	@FormProperty(text = "名称：")
 	private String name;
 	
-	@FormProperty(text = "备注")
+	@FormProperty(text = "备注",field="textArea")
 	private String remark;
 
 	public Integer getId() {
